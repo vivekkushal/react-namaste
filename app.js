@@ -12,6 +12,8 @@ const Title = () => (
 const HeadingComponent = () => (
   <h1 id="heading-component" tabIndex="6">
     <Title />
+    <Title></Title>
+    {Title()}
     Namaste React from Functional Component 🚀
   </h1>
 );
