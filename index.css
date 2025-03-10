@@ -1,7 +1,55 @@
-#title {
-  color: rebeccapurple;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#heading-component {
-  color: lightseagreen;
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.logo {
+  height: 150px;
+  width: 200px;
+}
+
+.nav-items > ul {
+  display: flex;
+  font-size: 24px;
+  list-style: none;
+}
+
+.nav-items > ul > li {
+  margin: 20px;
+}
+
+.search {
+  margin: 10px;
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: space-evenly;
+}
+
+.restaurant-card {
+  height: 400px;
+  width: 300px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  margin: 10px;
+}
+
+.restaurant-card:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.restaurant-img {
+  height: 60%;
+  width: 100%;
 }
