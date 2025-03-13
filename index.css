@@ -6,6 +6,7 @@
 
 .header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border: 1px solid black;
 }
@@ -25,8 +26,13 @@
   margin: 20px;
 }
 
-.search {
+.filter {
   margin: 10px;
+}
+
+.filter-btn {
+  cursor: pointer;
+  padding: 10px;
 }
 
 .restaurant-container {
