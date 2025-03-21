@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Filter from './Filter';
 import RestaurantContainer from './RestaurantContainer';
 
-import resList from '../utils/data';
+// import resList from '../utils/data';
+
+const url =
+  'https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8466937&lng=80.94616599999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
 
 // Body component
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
   // let listOfRestaurants = [
   //   {
   //     info: {
@@ -50,6 +53,29 @@ const Body = () => {
   //     },
   //   },
   // ];
+
+  async function fetchData(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const json = await response.json();
+      console.log(json);
+      setListOfRestaurants(
+        (_) =>
+          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+      );
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  useEffect(() => {
+    fetchData(url);
+  }, []);
 
   const filterHandler = () => {
     setListOfRestaurants((prevList) =>
