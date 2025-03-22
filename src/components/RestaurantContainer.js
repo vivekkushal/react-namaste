@@ -5,7 +5,7 @@ import RestaurantCard from './RestaurantCard';
 const RestaurantContainer = ({ resList }) => {
   return (
     <div className="restaurant-container">
-      {resList.length ? (
+      {resList?.length ? (
         resList.map((rest) => (
           <RestaurantCard resData={rest} key={rest?.info?.id} />
         ))
