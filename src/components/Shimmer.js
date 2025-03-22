@@ -1,9 +1,16 @@
 // Shimmer component
 const Shimmer = () => {
   return (
-    <div>
-      <h1>Shimmer</h1>
-    </div>
+    <>
+      <div className="restaurant-card"></div>
+      <div className="restaurant-card"></div>
+      <div className="restaurant-card"></div>
+      <div className="restaurant-card"></div>
+      <div className="restaurant-card"></div>
+      <div className="restaurant-card"></div>
+      <div className="restaurant-card"></div>
+      <div className="restaurant-card"></div>
+    </>
   );
 };
 
