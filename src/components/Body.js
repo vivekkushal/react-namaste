@@ -11,6 +11,8 @@ const url =
 // Body component
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState('');
   // let listOfRestaurants = [
   //   {
   //     info: {
@@ -68,6 +70,11 @@ const Body = () => {
           json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants
       );
+      setFilteredRestaurants(
+        (_) =>
+          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+      );
     } catch (error) {
       console.error(error.message);
     }
@@ -78,19 +85,36 @@ const Body = () => {
   }, []);
 
   const filterHandler = () => {
-    setListOfRestaurants((prevList) =>
+    setFilteredRestaurants((prevList) =>
       prevList.filter((rest) => rest?.info?.avgRating > 4.3)
     );
-    // listOfRestaurants = listOfRestaurants.filter(
+    // filteredRestaurants = filteredRestaurants.filter(
     //   (rest) => rest?.info?.avgRating >= 4.3
     // );
-    console.log(listOfRestaurants);
+    console.log(filteredRestaurants);
+  };
+
+  const changeHandler = (value) => {
+    setSearchText(() => value);
+  };
+
+  const searchHandler = (value) => {
+    setFilteredRestaurants(() =>
+      listOfRestaurants.filter((rest) =>
+        rest?.info?.name.toLowerCase().includes(value.toLowerCase())
+      )
+    );
   };
 
   return (
     <div className="body">
-      <Filter filterHandler={filterHandler} />
-      <RestaurantContainer resList={listOfRestaurants} />
+      <Filter
+        filterHandler={filterHandler}
+        changeHandler={changeHandler}
+        searchHandler={searchHandler}
+        searchText={searchText}
+      />
+      <RestaurantContainer resList={filteredRestaurants} />
     </div>
   );
 };

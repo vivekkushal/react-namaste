@@ -33,12 +33,17 @@
 }
 
 .filter {
+  display: flex;
   margin: 10px;
 }
 
 .filter-btn {
   cursor: pointer;
-  padding: 10px;
+  margin: 10px;
+}
+
+.search {
+  margin: 10px;
 }
 
 .restaurant-container {
