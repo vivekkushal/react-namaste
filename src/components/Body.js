@@ -65,7 +65,7 @@ const Body = () => {
       console.log(json);
       setListOfRestaurants(
         (_) =>
-          json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants
       );
     } catch (error) {
